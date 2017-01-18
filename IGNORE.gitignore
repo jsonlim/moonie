@@ -1,3 +1,6 @@
+bin/
+debug/
+
 # Shared objects (inc. Windows DLLs)
 *.dll
 *.so
