@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Moonie.Controllers
 {
     public class BucketListController : Controller
-    {
+    { 
         // GET: /<controller>/
         public IActionResult Index()
         {
