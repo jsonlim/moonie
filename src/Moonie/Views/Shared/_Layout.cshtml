@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Moonie Jashoonie</title>
+
+    <environment names="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/css/site.css" />
+    </environment>
+    <environment names="Staging,Production">
+        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+    </environment>
+    @Html.ApplicationInsightsJavaScript(TelemetryConfiguration)
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">Moonie and Jashoonie</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class=@(@ViewBag.activePage == "Home" ? "active" : "")><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
+                      <li class="dropdown @(@ViewBag.activePage == "Moon" ? "active" : "")">
+                          <a asp-area="" asp-controller="Moon" asp-action="Index" class="dropbtn">Moonie</a>
+                            <div class="dropdown-content1">
+                                <a asp-area="" asp-controller="Moon" asp-action="Past">Past</a>
+                                <a asp-area="" asp-controller="Moon" asp-action="Present">Present</a>
+                                <a asp-area="" asp-controller="Moon" asp-action="Future">Future</a>
+                                <a asp-area="" asp-controller="Moon" asp-action="Moon">Past</a>
+                                <a asp-area="" asp-controller="Moon" asp-action="Moon">Present</a>
+                                <a asp-area="" asp-controller="Moon" asp-action="Moon">Future</a>
+                        </div>
+                    </li>
+                    <li class="dropdown @(@ViewBag.activePage == "Jason" ? "active" : "")">
+                        <a asp-area="" asp-controller="Jason" asp-action="Index" class="dropbtn">Jashoonie</a>
+                        <div class="dropdown-content1">
+                            <a asp-area="" asp-controller="Jason" asp-action="Past" class="dropbtn">Past</a>
+                            <a asp-area="" asp-controller="Jason" asp-action="Present">Present</a>
+                            <a asp-area="" asp-controller="Jason" asp-action="Future">Future</a>
+                            <a asp-area="" asp-controller="Jason" asp-action="Jason">Past</a>
+                            <a asp-area="" asp-controller="Jason" asp-action="Jason">Present</a>
+                            <a asp-area="" asp-controller="Jason" asp-action="Jason">Future</a>
+                        </div>
+                    </li>
+                    <li class=@(@ViewBag.activePage == "BucketList" ? "active" : "")><a asp-area="" asp-controller="BucketList" asp-action="Index">Bucket List</a></li>
+                    <li class=@(@ViewBag.activePage == "Contact" ? "active" : "")><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                    <li class=@(@ViewBag.activePage == "About" ? "active" : "")><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
+
+                 </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; 2016 - Moonie</p>
+        </footer>
+    </div>
+
+    <environment names="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script type="text/javascript" src="~/js/site.js"></script>
+    </environment>
+    <environment names="Staging,Production">
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.jQuery">
+        </script>
+        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/bootstrap.min.js"
+                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal">
+        </script>
+        <script src="~/js/site.min.js"></script>
+    </environment>
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>
